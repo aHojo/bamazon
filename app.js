@@ -10,6 +10,22 @@ const connection = mysql.createConnection({
     "database": "bamazon"
 });
 
+let updateProduct = function (stock, purchased, id) {
+    
+    connection.query("UPDATE products SET ? WHERE ? ", [
+        {
+            "stock_quantity": parseInt(stock) - parseInt(purchased)
+        },
+        {
+            "item_id": id
+        }
+    ], function (err, response) {
+        if (err) {
+            console.error(err);
+        }
+    });
+}
+
 let listProducts = function () {
 
     connection.query("SELECT * FROM products", function (err, res) {
@@ -34,12 +50,32 @@ let listProducts = function () {
                 "message": "How man would you like to buy?"
             }
         ]).then(function (answer) {
-            console.log(answer.id);
-            console.log(answer.quantity);
+    
+            connection.query("SELECT * FROM bamazon.products WHERE ?", { "item_id": answer.id}, function (err, res) {
+                
+                if (err) {
+                    console.error(err);
+                }
+                if(parseInt(answer.quantity) > parseInt(res[0].stock_quantity)) {
+                    console.log(`Insufficient stock to fill request, we currently only have ${res[0].stock_quantity} left of ${res[0].product_name}`);
+                } else {
+                    let total = parseInt(answer.quantity) * parseInt(res[0].price);
+                    // console.log(res[0].item_id + " " + res[0].product_name + " " + res[0].department_name + " " + res[0].price);
+                    updateProduct(res[0].stock_quantity, answer.quantity, res[0].item_id);
 
-    });
+                    console.log(`\n\n${res[0].product_name}\nTotal: $${total}`);
+                    connection.end();
+                }
+
+            });
+            
+
+        });
     });
 };
+
+
+
 
 connection.connect((err) => {
     if (err) {
