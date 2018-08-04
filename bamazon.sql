@@ -25,7 +25,7 @@ VALUES ("Persona 5", "video games", 60.00, 3);
 INSERT INTO products (product_name, department_name, price, stock_quantity)
 VALUES ("ASUS ROG STRIX X299-E GAMING LGA2066", "pc hardware", 290.71, 9);
 INSERT INTO products (product_name, department_name, price, stock_quantity)
-VALUES ("Skyrm", "video games", 20.00, 15);
+VALUES ("Skyrim", "video games", 20.00, 15);
 INSERT INTO products (product_name, department_name, price, stock_quantity)
 VALUES ("Nintendo Switch", "video games", 299.00, 1);
 INSERT INTO products (product_name, department_name, price, stock_quantity)
