@@ -4,7 +4,7 @@
 
 ## Node.js & MySQL
 
-[Customer View](https://drive.google.com/file/d/1lfFw_a41Bc0bbkPkpsyuGeWl-GPRhYy9/view?usp=sharing)
+[Customer View](https://drive.google.com/file/d/1lfFw_a41Bc0bbkPkpsyuGeWl-GPRhYy9/view?usp=sharing) |
 [Manager View](https://drive.google.com/file/d/1CunqFBMVZzbl2JkdVRcbdzUAGSheHMit/view?usp=sharing)
 
 ## Customer Application
